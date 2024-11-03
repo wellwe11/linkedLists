@@ -1,20 +1,23 @@
-const Node = (val) => {
-  // Node class / factory, containing a value property and a nextNode property, set both as null by default.
-  let value = val || null;
-  let nextNode = null;
-
-  return {
-    value,
-    nextNode,
-  };
-};
-
+// Object to hold all Nodes & add add methods to maniupulate list with nodes
 export default function LinkedList() {
   // LinkedList class / factory, which will represent the full list.
 
+  // Add unique nodes to LinkedList; contain list of all nodes
+  const Node = (val) => ({ value: val || null, nextNode: null });
+
+  let first = null;
+  let last = null;
+
   const append = (val) => {
+    const currNode = Node(val);
+    if (!first) {
+      first = currNode;
+      last = currNode;
+    } else {
+      last.nextNode = currNode;
+      last = currNode;
+    }
     // append(value) adds a new node containing value to the end of the list
-    return Node(val);
   };
 
   const prepend = () => {
@@ -51,6 +54,15 @@ export default function LinkedList() {
 
   const toString = () => {
     // toString represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
+    let current = first;
+    let string = "";
+
+    while (current) {
+      string += `( ${current.value} ) -> `;
+      current = current.nextNode;
+    }
+
+    return string + `null`;
   };
 
   const insertAt = () => {
@@ -63,6 +75,7 @@ export default function LinkedList() {
 
   return {
     append,
+    toString,
   };
 }
 
@@ -70,6 +83,9 @@ const someThing = LinkedList();
 
 someThing.append("dog");
 someThing.append("horse");
+someThing.append("cat");
+
+console.log(someThing.toString());
 
 // when creating a new LinkedList, and appending something, it will append a "new Node object"
 
