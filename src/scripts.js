@@ -152,20 +152,3 @@ console.log(someThing.toString());
 console.log(someThing.contains("donkey"));
 console.log(someThing.find("dog"));
 console.log(someThing.find("donkey"));
-
-// when creating a new LinkedList, and appending something, it will append a "new Node object"
-
-// array that appends strings, sorts them based on some logic.
-
-/*
-
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-
-Outputs: ( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> null
-
-*/
